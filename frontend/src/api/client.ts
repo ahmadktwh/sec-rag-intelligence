@@ -16,9 +16,23 @@ export interface ChatRequest {
   api_key?: string;
 }
 
-export const chatWithAgent = async (data: ChatRequest) => {
-  const response = await api.post(`/chat`, data);
-  return response.data;
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+export const chatWithAgent = async (data: ChatRequest, retries = 3) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await api.post(`/chat`, data);
+      return response.data;
+    } catch (error: any) {
+      // If it's a network error (like timeout or connection refused) AND we have retries left
+      if (i < retries - 1 && (error.code === 'ECONNABORTED' || error.message.includes('Network Error') || error.response?.status >= 500)) {
+        console.warn(`Attempt ${i + 1} failed. Server might be waking up. Retrying in ${5 * (i + 1)} seconds...`);
+        await sleep(5000 * (i + 1)); // Wait 5s, then 10s...
+      } else {
+        throw error; // If all retries fail or it's a bad request (400), throw it
+      }
+    }
+  }
 };
 
 export const searchSEC = async (ticker: string, query: string, topK: number = 5) => {
