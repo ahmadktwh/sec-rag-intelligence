@@ -48,9 +48,32 @@ The system has ingested, sanitized, and indexed 10-K filings for the following c
 
 > All data sourced directly from SEC EDGAR — 100% free, public, government data. No license required.
 
+## 🚀 Choose Your Journey
+
+### Option A: Instant Financial Insights (Public Demo)
+**Best for:** Recruiters and casual users who want to see the system in action *right now*.
+1. Visit the [Live Demo Dashboard](#) *(Link your deployed frontend here)*.
+2. Enter your own **LLM API Key** in the Settings (Zero-Leakage Architecture).
+3. Start analyzing 50+ S&P 500 companies instantly using our pre-indexed cloud database.
+
+### Option B: Enterprise Self-Host (Developer Mode)
+**Best for:** AI Engineers and Financial Analysts who want a private, local instance.
+1. **Clone & Install:**
+   ```bash
+   git clone https://github.com/ahmadktwh/sec-rag-intelligence.git
+   cd sec-rag-intelligence
+   pip install -r requirements.txt
+   ```
+2. **Configure Secrets:** Create a `.env` file with your Pinecone and LLM keys.
+3. **Ingest & Run:**
+   ```bash
+   python scripts/ingest_companies.py
+   python main.py
+   ```
+
 ---
 
-## ⚙️ System Architecture
+## 🛠️ System Architecture
 
 ### High-Level Architecture
 ![System Architecture](./architecture.png)
