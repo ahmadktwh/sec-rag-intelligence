@@ -38,12 +38,17 @@ data/cache/
 *.htm
 *.html
 *.pdf
-!Mujeeb_RAG_Project_Blueprint.pdf
+# Strictly exclude all PDFs from the repo
 
-# ── Project internals (not for public) ──────────
+# ── Project internals & Planning ────────────────
 blueprint_content.txt
 plan.txt
+checkpoint*.txt
 _project_management/
+*.pdf
+*.docx
+*.txt
+!requirements.txt
 
 # ── Logs ─────────────────────────────────────────
 *.log
