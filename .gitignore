@@ -35,8 +35,6 @@ ENV/
 # ── Data & Downloads ────────────────────────────
 data/raw_filings/
 data/cache/
-*.htm
-*.html
 *.pdf
 # Strictly exclude all PDFs from the repo
 
