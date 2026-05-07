@@ -53,14 +53,13 @@ const App: React.FC = () => {
     pingBackend();
   }, []);
 
-  // Persist settings
+  // Persist settings (Double-check)
   useEffect(() => {
-    localStorage.setItem('sec_rag_api_key', apiKey);
-  }, [apiKey]);
-
-  useEffect(() => {
-    localStorage.setItem('sec_rag_model', selectedModel);
-  }, [selectedModel]);
+    const savedKey = localStorage.getItem('sec_rag_api_key');
+    const savedModel = localStorage.getItem('sec_rag_model');
+    if (savedKey) setApiKey(savedKey);
+    if (savedModel) setSelectedModel(savedModel);
+  }, []);
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -337,7 +336,10 @@ const App: React.FC = () => {
                   <input 
                     type="text"
                     value={selectedModel}
-                    onChange={(e) => setSelectedModel(e.target.value)}
+                    onChange={(e) => {
+                      setSelectedModel(e.target.value);
+                      localStorage.setItem('sec_rag_model', e.target.value);
+                    }}
                     placeholder="e.g. anthropic/claude-3-5-sonnet"
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-finance-accent outline-none focus:border-finance-accent/40 transition-all font-mono"
                   />
@@ -345,7 +347,10 @@ const App: React.FC = () => {
                     {['openai/gpt-4o', 'anthropic/claude-3.5-sonnet', 'gemini/gemini-2.0-flash', 'ollama/llama3'].map(m => (
                       <button 
                         key={m}
-                        onClick={() => setSelectedModel(m)}
+                        onClick={() => {
+                          setSelectedModel(m);
+                          localStorage.setItem('sec_rag_model', m);
+                        }}
                         className={`whitespace-nowrap text-[9px] font-bold px-3 py-1.5 rounded-full border transition-all ${selectedModel === m ? 'bg-finance-accent text-black border-finance-accent' : 'border-white/10 text-finance-muted hover:border-white/30'}`}
                       >
                         {m}
@@ -364,7 +369,10 @@ const App: React.FC = () => {
                     <input 
                       type="password"
                       value={apiKey}
-                      onChange={(e) => setApiKey(e.target.value)}
+                      onChange={(e) => {
+                        setApiKey(e.target.value);
+                        localStorage.setItem('sec_rag_api_key', e.target.value);
+                      }}
                       placeholder="Enter Key for Provider"
                       className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-5 py-4 text-sm text-finance-accent outline-none focus:border-finance-accent/40 transition-all"
                     />
