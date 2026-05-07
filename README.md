@@ -52,8 +52,8 @@ The system has ingested, sanitized, and indexed 10-K filings for the following c
 
 ### Option A: Instant Financial Insights (Public Demo)
 **Best for:** Recruiters and casual users who want to see the system in action *right now*.
-1. Visit the [Live Demo Dashboard](https://github.com/ahmadktwh/sec-rag-intelligence) *(Note: Deploy your frontend to Vercel/Netlify for a direct link)*.
-2. The frontend is pre-configured to connect to our live backend at `https://sec-rag-intelligence.onrender.com`.
+1. Visit the [Live Demo Dashboard](https://sec-rag-intelligence.vercel.app/).
+2. The frontend is connected to our live backend at `https://sec-rag-intelligence.onrender.com`.
 2. Enter your own **LLM API Key** in the Settings (Zero-Leakage Architecture).
 3. Start analyzing 50+ S&P 500 companies instantly using our pre-indexed cloud database.
 

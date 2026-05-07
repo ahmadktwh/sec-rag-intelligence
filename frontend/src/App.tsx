@@ -27,10 +27,12 @@ interface Message {
 }
 
 const ALL_TICKERS = [
-  "AAPL", "ABBV", "ABT", "ADBE", "AMAT", "AMD", "AMZN", "AVGO", "CAT", 
-  "COST", "CRM", "CSCO", "CVX", "DHR", "DIS", "GE", "GOOGL", "HD", 
-  "INTU", "JNJ", "KO", "LOW", "MA", "MCD", "META", "MSFT", "NFLX", 
-  "NKE", "NVDA", "PEP", "RTX", "TMO", "TSLA", "TXN", "UNH", "VZ", "V", "WMT", "XOM"
+  "AAPL", "MSFT", "NVDA", "GOOGL", "META", "AVGO", "ORCL", "CSCO",
+  "ADBE", "CRM", "QCOM", "TXN", "AMAT", "IBM", "AMD", "INTC",
+  "AMZN", "TSLA", "NFLX", "WMT", "COST", "HD", "MCD", "KO",
+  "PEP", "DIS", "PG", "JPM", "BRK.B", "V", "MA", "BAC", "WFC",
+  "UNH", "JNJ", "ABBV", "ABT", "MRK", "DHR", "TMO", "LLY",
+  "XOM", "CVX", "CAT", "PM", "LIN", "ACN", "INTU"
 ].sort();
 
 // --- Components ---
