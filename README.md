@@ -383,7 +383,7 @@ Health check for Kubernetes readiness/liveness probes.
 **Mujeeb Ahmad** — AI Engineer | RAG & Agentic Systems
 
 📧 m.ahmad.aidigital@gmail.com
-🔗 [LinkedIn](https://linkedin.com/in/mujeeb-ahmad)
+🔗 [LinkedIn](https://www.linkedin.com/in/mujeeb-ahmad-246893378)
 
 > *For live demo access or collaboration inquiries, contact via email.*
 
