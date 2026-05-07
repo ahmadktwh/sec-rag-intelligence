@@ -14,7 +14,7 @@
 
 **An enterprise-grade AI analyst powered by a 5-node LangGraph pipeline, analyzing real SEC 10-K filings from 50 S&P 500 companies.**
 
-[Live Demo](mailto:m.ahmad.aidigital@gmail.com?subject=SEC%20RAG%20Demo%20Access) · [Demo Queries](./DEMO.md) · [Architecture Breakdown](#-system-architecture)
+[Live Demo](https://sec-rag-intelligence.vercel.app/) · [Demo Queries](./DEMO.md) · [Architecture Breakdown](#-system-architecture)
 
 </div>
 
