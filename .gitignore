@@ -1,0 +1,71 @@
+# ═══════════════════════════════════════════════
+# SEC EDGAR RAG System — .gitignore
+# ═══════════════════════════════════════════════
+
+# ── CRITICAL: Never commit these ───────────────
+.env
+*.env
+.env.local
+.env.production
+.env.staging
+
+# ── Python ─────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ── Virtual Environments ────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── IDE ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Data & Downloads ────────────────────────────
+data/raw_filings/
+data/cache/
+*.htm
+*.html
+*.pdf
+!Mujeeb_RAG_Project_Blueprint.pdf
+
+# ── Project internals (not for public) ──────────
+blueprint_content.txt
+plan.txt
+_project_management/
+
+# ── Logs ─────────────────────────────────────────
+*.log
+logs/
+
+# ── OS ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Testing ───────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Docker ────────────────────────────────────────
+# docker-compose.override.yml
+
+# ── Node.js / Frontend ───────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# ── Misc ─────────────────────────────────────────
+*.txt
+!requirements.txt
