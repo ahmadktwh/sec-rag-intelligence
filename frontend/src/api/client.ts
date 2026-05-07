@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Change this to your deployed Render/AWS URL for the Public Demo
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://sec-rag-backend-your-link.onrender.com'; 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://sec-rag-intelligence.onrender.com'; 
 
 export interface ChatRequest {
   ticker: string;
