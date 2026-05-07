@@ -52,7 +52,10 @@ The system has ingested, sanitized, and indexed 10-K filings for the following c
 
 ## ⚙️ System Architecture
 
-### High-Level: 3-Layer Design
+### High-Level Architecture
+![System Architecture](./architecture.png)
+
+### 3-Layer Design Breakdown
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
