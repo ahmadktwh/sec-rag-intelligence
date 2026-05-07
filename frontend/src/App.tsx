@@ -13,7 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 // --- Local Imports ---
-import { chatWithAgent } from './api/client';
+import { chatWithAgent, pingBackend } from './api/client';
 import Sidebar from './components/Sidebar';
 
 // --- Types ---
@@ -46,6 +46,13 @@ const App: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState('gemini/gemini-2.5-pro');
   const [showSettings, setShowSettings] = useState(false);
   const [showSidebar, setShowSidebar] = useState(true);
+  const [currentAgent, setCurrentAgent] = useState('');
+
+  // Wake up backend on mount
+  useEffect(() => {
+    pingBackend();
+  }, []);
+
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
