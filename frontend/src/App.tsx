@@ -188,57 +188,111 @@ const App: React.FC = () => {
                       <Cpu className="w-5 h-5 text-finance-accent/50" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="prose prose-invert prose-finance max-w-none">
-                        <ReactMarkdown 
+
+                      {/* ── Main Markdown Response ── */}
+                      <div className="prose prose-invert max-w-none">
+                        <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
                           components={{
+                            /* Tables → styled card */
                             table: ({node, ...props}) => (
-                              <div className="overflow-x-auto my-8 border border-white/10 rounded-xl bg-white/5 shadow-xl">
+                              <div className="overflow-x-auto my-6 border border-white/10 rounded-xl bg-white/5 shadow-xl">
                                 <table className="w-full text-sm border-collapse" {...props} />
                               </div>
                             ),
+                            thead: ({node, ...props}) => (
+                              <thead className="bg-black/50" {...props} />
+                            ),
                             th: ({node, ...props}) => (
-                              <th className="px-5 py-4 bg-black/40 text-[11px] font-bold text-finance-accent uppercase tracking-widest text-left border-b border-white/10" {...props} />
+                              <th className="px-5 py-4 text-[11px] font-bold text-finance-accent uppercase tracking-widest text-left border-b border-white/10 whitespace-nowrap" {...props} />
                             ),
                             td: ({node, ...props}) => (
-                              <td className="px-5 py-3 border-b border-white/5 text-[14px] text-white/90 font-mono transition-colors hover:bg-white/5" {...props} />
+                              <td className="px-5 py-3 border-b border-white/5 text-[14px] text-white/90 align-top" {...props} />
+                            ),
+                            tr: ({node, ...props}) => (
+                              <tr className="hover:bg-white/5 transition-colors" {...props} />
+                            ),
+                            /* Headings */
+                            h1: ({node, ...props}) => (
+                              <h1 className="font-serif text-3xl text-finance-accent mb-6 mt-10 pb-3 border-b border-finance-accent/20" {...props} />
                             ),
                             h2: ({node, ...props}) => (
-                              <h2 className="font-serif text-2xl text-finance-accent mb-6 mt-12 pb-2 border-b border-finance-accent/20" {...props} />
+                              <h2 className="font-serif text-xl font-bold text-finance-accent mb-4 mt-8 pb-2 border-b border-finance-accent/15 flex items-center gap-2" {...props} />
                             ),
                             h3: ({node, ...props}) => (
-                              <h3 className="font-serif text-xl text-white mb-4 mt-8" {...props} />
+                              <h3 className="font-semibold text-base text-white mb-3 mt-6" {...props} />
                             ),
+                            /* Paragraph */
                             p: ({node, ...props}) => (
-                              <p className="text-[16px] leading-loose text-white/80 mb-5 font-serif" {...props} />
+                              <p className="text-[15px] leading-8 text-white/80 mb-4" {...props} />
                             ),
+                            /* Unordered list */
                             ul: ({node, ...props}) => (
-                              <ul className="space-y-3 mb-6 list-none pl-0" {...props} />
+                              <ul className="space-y-2.5 mb-5 pl-0 list-none" {...props} />
                             ),
-                            li: ({node, ...props}) => (
-                              <li className="text-[15px] leading-relaxed text-white/80 flex items-start gap-3 before:content-[''] before:block before:w-1.5 before:h-1.5 before:mt-2 before:bg-finance-accent before:rounded-full" {...props} />
+                            /* Ordered list */
+                            ol: ({node, ...props}) => (
+                              <ol className="space-y-2.5 mb-5 pl-0 list-none counter-reset-item" {...props} />
                             ),
+                            /* List item — works for both ul and ol */
+                            li: ({node, ordered, ...props}: any) => (
+                              <li className="text-[15px] leading-7 text-white/80 flex items-start gap-3">
+                                <span className="mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-finance-accent/70 block" />
+                                <span {...props} />
+                              </li>
+                            ),
+                            /* Emphasis & Bold */
                             strong: ({node, ...props}) => (
-                              <strong className="font-bold text-white tracking-wide" {...props} />
-                            )
+                              <strong className="font-bold text-white" {...props} />
+                            ),
+                            em: ({node, ...props}) => (
+                              <em className="text-finance-accent/80 not-italic font-medium" {...props} />
+                            ),
+                            /* Inline code & code blocks */
+                            code: ({node, inline, ...props}: any) =>
+                              inline
+                                ? <code className="bg-white/10 text-finance-accent text-[13px] px-2 py-0.5 rounded font-mono" {...props} />
+                                : <pre className="bg-black/50 border border-white/10 rounded-xl p-5 overflow-x-auto text-[13px] text-white/80 font-mono my-5"><code {...props} /></pre>,
+                            /* Horizontal rule */
+                            hr: () => <hr className="border-white/10 my-8" />,
+                            /* Block quote */
+                            blockquote: ({node, ...props}) => (
+                              <blockquote className="border-l-2 border-finance-accent/40 pl-5 text-white/60 italic my-5" {...props} />
+                            ),
                           }}
                         >
                           {m.content}
                         </ReactMarkdown>
                       </div>
-                      
+
+                      {/* ── Sources Section ── */}
                       {m.sources && m.sources.length > 0 && (
-                        <div className="mt-8 flex flex-wrap gap-2">
-                          {m.sources.map((_, si) => (
-                            <div key={si} className="text-[10px] text-finance-muted border border-white/5 px-3 py-1 rounded bg-white/5 font-mono hover:border-finance-accent/30 transition-colors cursor-pointer">
-                              Ref {si+1}
-                            </div>
-                          ))}
+                        <div className="mt-8 border-t border-white/5 pt-6">
+                          <p className="text-[10px] font-bold text-finance-muted uppercase tracking-widest mb-4 flex items-center gap-2">
+                            <ShieldCheck className="w-3 h-3 text-finance-profit" />
+                            SEC Official Sources
+                          </p>
+                          <ul className="space-y-2">
+                            {m.sources.map((src: any, si: number) => (
+                              <li key={si} className="flex items-start gap-3 group">
+                                <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded bg-finance-accent/10 border border-finance-accent/20 text-[10px] font-bold text-finance-accent flex items-center justify-center">
+                                  {si + 1}
+                                </span>
+                                <span className="text-[12px] text-white/50 group-hover:text-white/80 transition-colors leading-5 font-mono">
+                                  {typeof src === 'string' ? src : `${src.ticker || ''} | ${src.filing_type || '10-K'} | ${src.section || ''}`}
+                                  {src.relevance_score && (
+                                    <span className="ml-2 text-finance-accent/50">· Score: {(src.relevance_score).toFixed(2)}</span>
+                                  )}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
 
+                      {/* ── Confidence & Engine Footer ── */}
                       {m.confidence !== undefined && (
-                        <div className="mt-6 flex items-center gap-4 border-t border-white/5 pt-4 max-w-2xl">
+                        <div className="mt-6 flex items-center gap-4 border-t border-white/5 pt-4">
                           <div className="flex items-center gap-2 text-[9px] font-bold text-finance-muted uppercase tracking-widest">
                             <ShieldCheck className="w-3 h-3 text-finance-profit" /> Confidence: {(m.confidence * 100).toFixed(0)}%
                           </div>
@@ -248,6 +302,7 @@ const App: React.FC = () => {
                           </div>
                         </div>
                       )}
+
                     </div>
                   </div>
                 </div>
