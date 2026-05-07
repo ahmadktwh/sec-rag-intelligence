@@ -42,8 +42,8 @@ const ALL_TICKERS = [
 const App: React.FC = () => {
   const [query, setQuery] = useState('');
   const [selectedTickers, setSelectedTickers] = useState<string[]>(['AAPL']);
-  const [apiKey, setApiKey] = useState('');
-  const [selectedModel, setSelectedModel] = useState('gemini/gemini-2.5-pro');
+  const [apiKey, setApiKey] = useState(() => localStorage.getItem('sec_rag_api_key') || '');
+  const [selectedModel, setSelectedModel] = useState(() => localStorage.getItem('sec_rag_model') || 'gemini/gemini-2.5-pro');
   const [showSettings, setShowSettings] = useState(false);
   const [showSidebar, setShowSidebar] = useState(true);
   const [currentAgent, setCurrentAgent] = useState('');
@@ -52,6 +52,15 @@ const App: React.FC = () => {
   useEffect(() => {
     pingBackend();
   }, []);
+
+  // Persist settings
+  useEffect(() => {
+    localStorage.setItem('sec_rag_api_key', apiKey);
+  }, [apiKey]);
+
+  useEffect(() => {
+    localStorage.setItem('sec_rag_model', selectedModel);
+  }, [selectedModel]);
 
   const [messages, setMessages] = useState<Message[]>([
     {
