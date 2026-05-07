@@ -6,8 +6,7 @@ import {
   RefreshCw, 
   Send, 
   Settings as SettingsIcon, 
-  HelpCircle,
-  BarChart3 
+  HelpCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -26,8 +25,6 @@ interface Message {
   confidence?: number;
   sources?: string[];
 }
-
-const API_BASE_URL = 'http://localhost:8000';
 
 const ALL_TICKERS = [
   "AAPL", "ABBV", "ABT", "ADBE", "AMAT", "AMD", "AMZN", "AVGO", "CAT", 
@@ -214,7 +211,7 @@ const App: React.FC = () => {
                       
                       {m.sources && m.sources.length > 0 && (
                         <div className="mt-8 flex flex-wrap gap-2">
-                          {m.sources.map((s, si) => (
+                          {m.sources.map((_, si) => (
                             <div key={si} className="text-[10px] text-finance-muted border border-white/5 px-3 py-1 rounded bg-white/5 font-mono hover:border-finance-accent/30 transition-colors cursor-pointer">
                               Ref {si+1}
                             </div>
