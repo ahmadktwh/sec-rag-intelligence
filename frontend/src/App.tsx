@@ -103,8 +103,10 @@ const App: React.FC = () => {
         confidence: data.confidence,
         sources: data.sources
       }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Protocol Failure: Unable to establish connection with the intelligence engine. Please verify backend status." }]);
+    } catch (error: any) {
+      console.error("API Error:", error);
+      const errorMessage = error.response?.data?.detail || error.message || "Unknown Connection Error";
+      setMessages(prev => [...prev, { role: 'assistant', content: `Protocol Failure: ${errorMessage}. Please check if the backend is waking up (Render free tier can take 40s).` }]);
     } finally {
       setIsThinking(false);
       setCurrentAgent('');
