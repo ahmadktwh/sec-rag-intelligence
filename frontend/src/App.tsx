@@ -69,7 +69,6 @@ const App: React.FC = () => {
     }
   ]);
   const [isThinking, setIsThinking] = useState(false);
-  const [currentAgent, setCurrentAgent] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   // --- Utility: Parse Claude Artifacts (Removed) ---
