@@ -1,3 +1,5 @@
+[![SEC RAG Intelligence — CI/CD Pipeline](https://github.com/ahmadktwh/sec-rag-intelligence/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/ahmadktwh/sec-rag-intelligence/actions/workflows/ci-cd.yml)
+
 # SEC EDGAR Financial Intelligence RAG System
 
 <div align="center">
