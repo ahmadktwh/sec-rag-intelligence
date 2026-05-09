@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: sec-rag-api
-          image: YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sec-rag-intelligence:latest
+          image: 217113049159.dkr.ecr.us-east-1.amazonaws.com/sec-rag-intelligence:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
