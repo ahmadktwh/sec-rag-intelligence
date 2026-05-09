@@ -74,6 +74,28 @@ The system has ingested, sanitized, and indexed 10-K filings for the following c
 
 ---
 
+## 📸 Deployment & Execution Proof
+
+This project is a fully verified, production-deployed system. Below is the technical proof of execution, deployment, and observability, captured live during operation.
+
+### 1. AWS EKS Cloud Infrastructure (Provisioned & Active)
+Demonstrates the successful creation of a managed Kubernetes cluster on AWS EKS (v1.34), proving cloud infrastructure engineering capability.
+![AWS EKS Console](./eks_console.png)
+
+### 2. Kubernetes Container Orchestration (Live Pods)
+Demonstrates `kubectl` verification of the running API pod within the cluster, proving container orchestration and deployment success.
+![Kubernetes Pods](./kubectl_pods.png)
+
+### 3. API Execution & Multi-Agent Comparison (Live Response)
+Demonstrates the FastAPI endpoint successfully processing a complex multi-ticker comparison query (AAPL vs NVDA) and returning structured markdown with financial metrics.
+![Postman API Response](./postman_api.png)
+
+### 4. LangSmith AI Observability (Agent Trace)
+Demonstrates the LangGraph stateful agent pipeline in action. Shows the live trace of the Router, Retrieval, Analyst, Citation, and Guardrail agents coordinating to generate the final response.
+![LangSmith Trace](./langsmith_trace.png)
+
+---
+
 ## 🛠️ System Architecture
 
 ### High-Level Architecture
