@@ -112,7 +112,10 @@ async def root():
     }
 
 
-@app.post("/search", response_model=SearchResponse, tags=["Search"])
+@app.get("/health", tags=["Health"])
+async def health():
+    """Kubernetes health check endpoint."""
+    return {"status": "healthy"}
 async def search(request: SearchRequest):
     """
     Direct vector search — returns raw matching chunks from SEC filings.
